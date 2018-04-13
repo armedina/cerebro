@@ -8,8 +8,6 @@
   <artifactId>cerebro</artifactId>
 
   <properties>
-    <!-- uncomment if you wish to set your project here project- gcloud is used otherwise -->
-    <!-- <app.deploy.project>HCJF</app.deploy.project> -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>

@@ -18,12 +18,17 @@ import java.io.IOException;
 import static com.ml.properties.Properties.*;
 
 /**
+ * This listener get a connection db and share against servlet context,
+ * so only one connection ist used in the same server instance
+ *
  * @author Andres Medina
  */
 @WebListener
 public class BigTableConnector implements ServletContextListener {
-    private static String PROJECT_ID = "hcjf-200618";
-    private static String INSTANCE_ID = "dna-db";
+    private static String PROJECT_ID;
+    private static String INSTANCE_ID;
+    private final static String APP_ENGINE_PROJECT_PROPERTY ="projectID";
+    private final static String BIGTABLE_INSTANCE_PROPERTY ="instanceID";
 
     private static Connection connection = null;
 
@@ -59,6 +64,9 @@ public class BigTableConnector implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent event) {
+
+        PROJECT_ID = System.getProperty(APP_ENGINE_PROJECT_PROPERTY);
+        INSTANCE_ID = System.getProperty(BIGTABLE_INSTANCE_PROPERTY);
 
         if (event != null) {
             sc = event.getServletContext();
